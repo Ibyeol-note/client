@@ -1,0 +1,3 @@
+dynamic getJsContext() {
+  return null;
+}
