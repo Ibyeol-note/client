@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ibyeol_note/common/models/general_state.dart';
+import 'package:ibyeol_note/common/models/general_data_state.dart';
 
 class GeneralStateWidget<T> extends ConsumerWidget {
-  final GeneralState<T> state;
+  final StateNotifierProvider<GeneralDataStateNotifier<T>, GeneralDataState<T>> provider;
   final Widget Function() initial;
   final Widget Function() loading;
   final Widget Function(T data) success;
@@ -12,7 +12,7 @@ class GeneralStateWidget<T> extends ConsumerWidget {
 
   const GeneralStateWidget({
     super.key,
-    required this.state,
+    required this.provider,
     required this.initial,
     required this.loading,
     required this.success,
@@ -21,6 +21,7 @@ class GeneralStateWidget<T> extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(provider);
     return state.when(
       initial: initial,
       loading: loading,
