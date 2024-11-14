@@ -59,6 +59,14 @@ class LoginView extends StatelessWidget {
                           final user =
                               await UserApi.instance.loginWithKakaoTalk();
                           print('카카오톡으로 로그인 성공 ${user.accessToken}');
+                          if (context.mounted) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SelectUiView(),
+                              ),
+                            );
+                          }
                         } catch (error) {
                           print('카카오톡으로 로그인 실패 $error');
                           if (error is PlatformException &&
@@ -69,6 +77,14 @@ class LoginView extends StatelessWidget {
                             final user =
                                 await UserApi.instance.loginWithKakaoAccount();
                             print('카카오계정으로 로그인 성공 ${user.accessToken}');
+                            if (context.mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SelectUiView(),
+                                ),
+                              );
+                            }
                           } catch (error) {
                             print('카카오계정으로 로그인 실패 $error');
                           }
@@ -78,6 +94,14 @@ class LoginView extends StatelessWidget {
                           final user =
                               await UserApi.instance.loginWithKakaoAccount();
                           print('카카오계정으로 로그인 성공 ${user.accessToken}');
+                          if (context.mounted) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SelectUiView(),
+                              ),
+                            );
+                          }
                         } catch (error) {
                           print('카카오계정으로 로그인 실패 $error');
                         }
