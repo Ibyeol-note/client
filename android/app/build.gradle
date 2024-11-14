@@ -5,6 +5,14 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+def kakaoKey = localProperties.getProperty('kakao.key')
+if (kakaoKey == null) {
+    throw new GradleException("kakao.key is not set in local.properties")
+}
+
 android {
     namespace = "com.ibyeolnote.ibyeol_note"
     compileSdk = flutter.compileSdkVersion
@@ -28,6 +36,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        manifestPlaceholders = [kakaoKey : kakaoKey, applicationName:"io.flutter.app.FlutterApplication"]
     }
 
     buildTypes {

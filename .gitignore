@@ -84,3 +84,8 @@ lib/generated_plugin_registrant.dart
 
 *.env
 env.js
+
+IbyeolNote.xcconfig
+**/android/app/src/main/res/values/strings.xml
+.idea/
+.DS_Store
