@@ -26,8 +26,12 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const MaterialApp(
-      home: HomeView(),
+    return MaterialApp(
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
+        child: child!,
+      ),
+      home: const HomeView(),
     );
   }
 }
