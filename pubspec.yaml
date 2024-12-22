@@ -42,3 +42,27 @@ flutter:
   assets:
     - assets/develop.env
     - assets/release.env
+    - assets/place_holder.png
+    - assets/fonts/
+
+  fonts:
+    - family: MinSans
+      fonts:
+        - asset: assets/fonts/MinSans-Regular.otf
+          weight: 400
+        - asset: assets/fonts/MinSans-Medium.otf
+          weight: 500
+    - family: NanumMyeongjo
+      fonts:
+        - asset: assets/fonts/NanumMyeongjoBold.otf
+          weight: 700
+    - family: SpoqaHanSansNeo
+      fonts:
+        - asset: assets/fonts/SpoqaHanSansNeo-Light.otf
+          weight: 300
+        - asset: assets/fonts/SpoqaHanSansNeo-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SpoqaHanSansNeo-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SpoqaHanSansNeo-Bold.otf
+          weight: 700

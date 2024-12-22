@@ -84,3 +84,5 @@ lib/generated_plugin_registrant.dart
 
 *.env
 env.js
+*.g.dart
+*.freezed.dart
