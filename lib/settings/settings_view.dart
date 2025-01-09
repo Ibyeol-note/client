@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ibyeol_note/settings/app_settings_view.dart';
+import 'package:ibyeol_note/common/styles/typos.dart';
+
 import 'package:ibyeol_note/settings/settings_repository.dart';
+import 'package:ibyeol_note/settings/components/setting_list_tile.dart';
+
+import 'package:ibyeol_note/settings/app_settings_view.dart';
 
 class SettingsView extends ConsumerWidget {
   const SettingsView({super.key});
@@ -12,35 +16,59 @@ class SettingsView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('이별노트'),
+        title: const Text('My Page'),
       ),
       body: Column(
         children: [
-          Image.network(
-            'https://loremflickr.com/600/400',
-          ),
-          Text('닉네임', style: TextStyle(fontSize: ref.read(settingsProvider).getValue('fontSize') - 2)),
-          Text('닉네임 표시 부', style: TextStyle(fontSize: ref.read(settingsProvider).getValue('fontSize'))),
-          TextButton(
-            onPressed: () {},
-            child: Text('잡고싶어요\n(잊고싶어요)', textAlign: TextAlign.center, style: TextStyle(fontSize: settings.getSetting('fontSize').value)),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text('서비스 안내', textAlign: TextAlign.center, style: TextStyle(fontSize: settings.getSetting('fontSize').value)),
-          ),
-          TextButton.icon(
-            label: Text('설정', style: TextStyle(fontSize: settings.getSetting('fontSize').value)),
-            icon: const Icon(Icons.arrow_right),
-            iconAlignment: IconAlignment.end,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const AppSettingsView(),
+          Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(
+                    'https://loremflickr.com/600/400',
+                    width: 120,
+                    height: 120,
+                    alignment: Alignment.center,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              );
-            },
+                const SizedBox(height: 8.0),
+                Text(
+                  '잡고 싶은  닉네임 님',
+                  style: Typos.bodySmall,
+                ),
+              ],
+            ),
           ),
+          SettingsListTile(
+              title: '추억 보관함',
+              onTap: () {
+                // 추억 보관함 페이지로 이동
+              }),
+          SettingsListTile(
+              title: '우리의 이야기',
+              onTap: () {
+                // 우리의 이야기 페이지로 이동
+              }),
+          SettingsListTile(
+              title: '고객 제안',
+              onTap: () {
+                // 고객 제안 페이지로 이동
+              }),
+          SettingsListTile(
+              title: '설정',
+              border: false,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const AppSettingsView(),
+                  ),
+                );
+              }),
         ],
       ),
     );
