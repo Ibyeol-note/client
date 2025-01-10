@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ibyeol_note/common/styles/colors.dart';
 import 'package:ibyeol_note/common/styles/typos.dart';
 import 'package:ibyeol_note/common/widgets/app_bar_btn.dart';
@@ -57,7 +56,7 @@ class LibDetailView extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(bottom: 56),
+          padding: const EdgeInsets.only(bottom: 54),
           child: SingleChildScrollView(
             child: Column(
               children: [
