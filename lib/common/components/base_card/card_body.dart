@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CardBody extends StatelessWidget {
   final String bodyText;
   final TextStyle style;
-  final int maxLines;
+  final int? maxLines;
 
   final VoidCallback? onTap;
 
