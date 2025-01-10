@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ibyeol_note/common/utils/web_utils.dart';
 
-import 'package:ibyeol_note/home/home_view.dart';
+import 'package:ibyeol_note/start/main_view.dart';
 
 Future<void> main() async {
   var envPath = kReleaseMode ? 'assets/release.env' : 'assets/develop.env';
@@ -27,11 +27,18 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+      ),
       builder: (context, child) => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
+        data: MediaQuery.of(context)
+            .copyWith(textScaler: const TextScaler.linear(1)),
         child: child!,
       ),
-      home: const HomeView(),
+      home: const MainView(), //
     );
   }
 }
