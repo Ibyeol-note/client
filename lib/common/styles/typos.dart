@@ -14,9 +14,9 @@ class Typos {
   static final bodyMedium = TextStyle(fontFamily: "SpoqaHanSansNeo", height: 24 / 16, fontSize: 16, fontWeight: FontWeight.w300, letterSpacing: getSpacing(16, -2));
   static final bodySmall = TextStyle(fontFamily: "SpoqaHanSansNeo", height: 21 / 14, fontSize: 14, fontWeight: FontWeight.w300, letterSpacing: getSpacing(14, -2));
 
-  static final captionLarge = TextStyle(fontFamily: "SpoqaHanSansNeo", height: 21 / 14, fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: getSpacing(14, -2));
+  static final captionLarge = TextStyle(fontFamily: "SpoqaHanSansNeo", height: 21 / 14, fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: getSpacing(14, -2));
   static final captionMedium = TextStyle(fontFamily: "SpoqaHanSansNeo", height: 15 / 10, fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: getSpacing(10, 1));
-  static final captionSmall = TextStyle(fontFamily: "NanumMyeongjo", height: 15 / 10, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: getSpacing(10, 1));
+  static final captionSmall = TextStyle(fontFamily: "NanumMyeongjo", height: 15 / 10, fontSize: 10, fontWeight: FontWeight.w600, letterSpacing: getSpacing(10, 1));
 }
 
 double getSpacing(double fontSize, double percentage) {
