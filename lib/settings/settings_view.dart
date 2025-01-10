@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ibyeol_note/common/styles/typos.dart';
+import 'package:ibyeol_note/common/widgets/custom_app_bar.dart';
 
 import 'package:ibyeol_note/settings/settings_repository.dart';
 import 'package:ibyeol_note/settings/components/setting_list_tile.dart';
@@ -15,8 +16,9 @@ class SettingsView extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Page'),
+      appBar: const CustomAppBar(
+        title: 'My Page',
+        hasDivider: true,
       ),
       body: Column(
         children: [
