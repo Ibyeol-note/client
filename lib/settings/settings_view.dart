@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ibyeol_note/common/styles/typos.dart';
 import 'package:ibyeol_note/common/widgets/custom_app_bar.dart';
 
-import 'package:ibyeol_note/settings/settings_repository.dart';
 import 'package:ibyeol_note/settings/components/setting_list_tile.dart';
+import 'package:ibyeol_note/settings/components/profile_image_widget.dart';
 
 import 'package:ibyeol_note/settings/app_settings_view.dart';
 
@@ -13,8 +13,6 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(settingsProvider);
-
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'My Page',
@@ -28,16 +26,7 @@ class SettingsView extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    'https://loremflickr.com/600/400',
-                    width: 120,
-                    height: 120,
-                    alignment: Alignment.center,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                const ProfileImageWidget(image: 'https://loremflickr.com/600/400'),
                 const SizedBox(height: 8.0),
                 Text(
                   '잡고 싶은  닉네임 님',
