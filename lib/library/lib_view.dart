@@ -44,7 +44,8 @@ class LibView extends StatelessWidget {
                   onBodyTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => const LibDetailView(),
+                        builder: (_) =>
+                            LibDetailView(hasComment: index % 2 == 0),
                       ),
                     );
                   },

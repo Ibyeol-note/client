@@ -116,7 +116,6 @@ class _NoteDetailViewState extends State<NoteDetailView> {
                         "수정",
                         () {
                           setStatus(NoteDetailStatus.edit);
-                          print("[PRINT] 수정 버튼 클릭");
                         },
                       )),
                       Btn(("공유", () {})),

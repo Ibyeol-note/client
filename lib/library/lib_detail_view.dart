@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ibyeol_note/common/constants/strings.dart';
 import 'package:ibyeol_note/common/styles/colors.dart';
 import 'package:ibyeol_note/common/styles/typos.dart';
+import 'package:ibyeol_note/common/utils/string_extension.dart';
 import 'package:ibyeol_note/common/widgets/app_bar_btn.dart';
 import 'package:ibyeol_note/common/widgets/custom_app_bar.dart';
 import 'package:ibyeol_note/library/components/comment_card.dart';
@@ -11,10 +12,19 @@ import 'package:ibyeol_note/library/components/library_detail_card.dart';
 import 'package:ibyeol_note/library/components/recomment_card.dart';
 
 class LibDetailView extends StatelessWidget {
-  const LibDetailView({super.key});
+  const LibDetailView({super.key, required this.hasComment});
 
+  final bool hasComment; // [TODO] 추후 삭제
   @override
   Widget build(BuildContext context) {
+    final sWidth = MediaQuery.of(context).size.width;
+    final sHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    final bodyHeight = DefaultText.dummy.height(sWidth - 32, Typos.bodySmall);
+    final double commentHeight =
+        sHeight - bodyHeight - 322 > 0 ? sHeight - bodyHeight - 322 : 60;
+
     final tempComments = List.generate(
       10,
       (idx) => CommentCardData(
@@ -57,7 +67,8 @@ class LibDetailView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(bottom: 54),
+        padding:
+            EdgeInsets.only(bottom: 54 + MediaQuery.of(context).padding.bottom),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -96,25 +107,37 @@ class LibDetailView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "답글 상세보기(${tempComments.length + tempComments.map((e) => e.reComments.length).toList().reduce((val, e) => val + e)}개)",
+                  "답글 상세보기(${hasComment ? tempComments.length + tempComments.map((e) => e.reComments.length).toList().reduce((val, e) => val + e) : 0}개)",
                   style: Typos.captionMedium.copyWith(
                     color: MyColors.fontLightGray,
                   ),
                 ),
               ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (_, idx) => CommentCard(
-                  data: tempComments[idx],
-                ),
-                separatorBuilder: (_, idx) => const Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: MyColors.gray100,
-                ),
-                itemCount: 10,
-              )
+              hasComment
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, idx) => CommentCard(
+                        data: tempComments[idx],
+                      ),
+                      separatorBuilder: (_, idx) => const Divider(
+                        height: 1,
+                        thickness: 1,
+                        color: MyColors.gray100,
+                      ),
+                      itemCount: 10,
+                    )
+                  : SizedBox(
+                      height: commentHeight,
+                      child: Center(
+                        child: Text(
+                          "첫 답글을 남겨주세요.",
+                          style: Typos.bodySmall.copyWith(
+                            color: MyColors.fontGray,
+                          ),
+                        ),
+                      ),
+                    )
             ],
           ),
         ),

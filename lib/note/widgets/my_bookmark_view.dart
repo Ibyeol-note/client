@@ -30,7 +30,7 @@ class MyBookmarkView extends StatelessWidget {
           onBodyTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const LibDetailView(),
+                builder: (context) => const LibDetailView(hasComment: true),
               ),
             );
           },
