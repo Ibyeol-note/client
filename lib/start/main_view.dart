@@ -23,11 +23,9 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     const List<Widget> pages = [LibView(), NoteView(), SettingsView()];
-    return SafeArea(
-      child: Scaffold(
-        body: pages[curIdx],
-        bottomNavigationBar: BotNav(idx: curIdx, changeIdx: changeIdx),
-      ),
+    return Scaffold(
+      body: pages[curIdx],
+      bottomNavigationBar: BotNav(idx: curIdx, changeIdx: changeIdx),
     );
   }
 }

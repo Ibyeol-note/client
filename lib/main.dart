@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ibyeol_note/common/utils/web_utils.dart';
@@ -17,6 +18,16 @@ Future<void> main() async {
     // 환경변수는 web/env.js 로 관리
     dotenv.env['BASE_URL'] = jsContext['ENV']['BASE_URL'] as String;
   }
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -30,6 +41,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
@@ -38,7 +50,7 @@ class MyApp extends ConsumerWidget {
             .copyWith(textScaler: const TextScaler.linear(1)),
         child: child!,
       ),
-      home: const MainView(), //
+      home: const MainView(),
     );
   }
 }
