@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ibyeol_note/common/constants/strings.dart';
 import 'package:ibyeol_note/common/styles/colors.dart';
 import 'package:ibyeol_note/library/components/library_card.dart';
+import 'package:ibyeol_note/library/lib_detail_view.dart';
 
 class MyBookmarkView extends StatelessWidget {
   const MyBookmarkView({super.key});
@@ -26,6 +27,13 @@ class MyBookmarkView extends StatelessWidget {
                 : 'https://picsum.photos/seed/${idx + 1}/200/300',
             bodyText: DefaultText.dummy,
           ),
+          onBodyTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const LibDetailView(),
+              ),
+            );
+          },
         ),
       ),
       separatorBuilder: (_, __) => const Divider(

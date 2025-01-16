@@ -30,6 +30,12 @@ class _NoteViewState extends State<NoteView>
       backgroundColor: MyColors.iconWhite,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) =>
+                  const NoteDetailView(initStatus: NoteDetailStatus.write),
+            ),
+          );
         },
         backgroundColor: Colors.black,
         shape: const CircleBorder(),
@@ -41,7 +47,7 @@ class _NoteViewState extends State<NoteView>
       ),
       appBar: CustomAppBar(
           title: "Note",
-          icon: const Icon(Icons.more_horiz_rounded),
+          icon: const Icon(Icons.more_horiz_rounded, size: 32),
           onIconTap: () {}),
       body: Column(
         children: [

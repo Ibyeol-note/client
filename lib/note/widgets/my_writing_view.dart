@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ibyeol_note/common/constants/strings.dart';
 import 'package:ibyeol_note/common/models/enums/note_detail_status.dart';
 import 'package:ibyeol_note/common/styles/colors.dart';
+import 'package:ibyeol_note/note/note_detail_view.dart';
 import 'package:ibyeol_note/note/widgets/note_card.dart';
 
 class MyWritingView extends StatelessWidget {
@@ -20,6 +21,14 @@ class MyWritingView extends StatelessWidget {
               postTime: DateTime.now(),
               content: DefaultText.dummy,
               onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const NoteDetailView(
+                      initStatus: NoteDetailStatus.read,
+                      initContent: DefaultText.dummy,
+                    ),
+                  ),
+                );
               },
             ),
             separatorBuilder: (_, __) =>
