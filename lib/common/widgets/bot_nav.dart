@@ -21,8 +21,9 @@ class BotNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 58,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      height: 58 + MediaQuery.of(context).padding.bottom,
+      padding:
+          EdgeInsets.fromLTRB(16, 0, 16, MediaQuery.of(context).padding.bottom),
       decoration: const BoxDecoration(
           border: Border(
             top: BorderSide(
@@ -65,6 +66,7 @@ class BotNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: onTap,
       child: Container(
         width: 72,
